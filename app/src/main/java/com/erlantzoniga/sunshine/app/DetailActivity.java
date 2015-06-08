@@ -1,5 +1,6 @@
 package com.erlantzoniga.sunshine.app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,14 @@ public class DetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        /*Intent intent = getIntent();
+        String forecast = intent.getStringExtra(Intent.EXTRA_TEXT);*/
+        /*if (savedInstanceState == null) {
+            DetailActivityFragment details = new DetailActivityFragment();
+            details.setArguments(getIntent().getExtras());
+            getSupportFragmentManager().beginTransaction().add(
+                    R.id.fragment, details).commit();
+        }*/
     }
 
 
