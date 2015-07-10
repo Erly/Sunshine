@@ -1,8 +1,10 @@
 package com.erlantzoniga.sunshine.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -82,7 +84,10 @@ public class ForecastFragment extends Fragment {
             }
         });
 
-        new FetchWeatherTask().execute("48980,es");
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String locationPref = sharedPref.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+
+        new FetchWeatherTask().execute(locationPref);
 
         return rootView;
     }
@@ -102,7 +107,10 @@ public class ForecastFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
-            new FetchWeatherTask().execute("48980,es");
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String locationPref = sharedPref.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+
+            new FetchWeatherTask().execute(locationPref);
             return true;
         }
 
