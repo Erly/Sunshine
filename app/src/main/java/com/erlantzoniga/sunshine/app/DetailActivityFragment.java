@@ -28,7 +28,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
 
     private static final String LOG_TAG = DetailActivityFragment.class.getSimpleName();
 
-    private static final String FORECAS_SHARE_HASHTAG = "#SunshineApp";
+    private static final String FORECAST_SHARE_HASHTAG = "#SunshineApp";
 
     private ShareActionProvider mShareActionProvider;
     private String mForecastStr;
@@ -83,7 +83,7 @@ public class DetailActivityFragment extends Fragment implements LoaderCallbacks<
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT,
-                mForecastStr + " " + FORECAS_SHARE_HASHTAG);
+                mForecastStr + " " + FORECAST_SHARE_HASHTAG);
         return shareIntent;
     }
 
