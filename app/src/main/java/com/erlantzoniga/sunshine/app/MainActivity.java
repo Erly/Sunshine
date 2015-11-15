@@ -13,10 +13,25 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String mLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mLocation = Utility.getPreferredLocation(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String newLocation = Utility.getPreferredLocation(this);
+        if (newLocation != mLocation) {
+            ForecastFragment ff = (ForecastFragment)getSupportFragmentManager()
+                    .findFragmentByTag(ForecastFragment.FORECASTFRAGMENT_TAG);
+            ff.onLocationChanged();
+            mLocation = newLocation;
+        }
     }
 
 
@@ -49,6 +64,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openPreferredLocationInMap() {
-        String location = Utility.getPreferredLocation(this);
+        mLocation = Utility.getPreferredLocation(this);
     }
 }
